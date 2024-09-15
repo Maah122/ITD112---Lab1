@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Sidebar from './Sidebar';
+import AddDengueData from './AddDengueData'; 
+import DengueDataList from './DengueDataList';
+import CSVUploader from './CSVUploader';
 
-function App() {
+
+
+import './styles.css';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <div className="app">
+          <Sidebar />
+        <div className="main-content">
+          <h1>Dengue Data CRUD App</h1>
+          <Routes>
+          <Route path="/" element={<DengueDataList/>} />
+            <Route path="/add-data" element={<AddDengueData />} />
+            <Route path="//upload-csv" element={<CSVUploader />} />
+            
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
